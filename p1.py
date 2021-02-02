@@ -1,4 +1,5 @@
 class Solution(object):
-    def defangIPaddr(self, address):
-        address = address.replace(".", "[.]")
-        return address
+    def interpret(self, command):
+        command = command.replace("()","o")
+        command = command.replace("(al)","al")
+        return command
