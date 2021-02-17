@@ -1,8 +1,8 @@
 a = str(input())
 mass = a.split()
+min = 999
 for i in range(0,len(mass)):
-    mass[i] = int(mass[i])
-for i in range(0,len(mass)):
-    if i%2 == 0 or i ==0:
-        print(mass[i])
-
+    if int(mass[i]) > 0:
+        if int(mass[i])<min:
+            min = int(mass[i])
+print(min)
