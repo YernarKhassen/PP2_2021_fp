@@ -1,10 +1,8 @@
-a = list(map(int,input().strip().split()))
-cnt = 0
-for i in a:
-    if i:
-        print(i)
-    else:
-        cnt+=1
-while cnt >0:
-    print(0)
-    cnt-=1
+a = list(map(int,input().split()))
+n = int(input())
+n%=len(a)
+if n < 0:
+    n = abs(n)
+    print(*(a[n:] + a[0:n]))
+else:
+    print(*(a[-n:] + a[0:-n]))
