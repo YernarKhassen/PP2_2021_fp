@@ -5,7 +5,7 @@ pygame.init()
 
 win_width = 1000
 win_height = 500
-win = pygame.display.set_mode((1000,500))
+win = pygame.display.set_mode((win_width,win_height))
 
 pygame.display.set_caption("hw9")
 
@@ -47,7 +47,7 @@ def drawCos():
     for x in range(win_width):
         y = int(math.cos(x / win_width * n * math.pi) * A + 250)
         points.append([x, y])
-    pygame.draw.lines(win, BLUE, False, points, 3)
+    pygame.draw.aalines(win, BLUE, False, points, 5)
 
 
 def drawSin():
@@ -57,7 +57,7 @@ def drawSin():
     for x in range(win_width):
         y = int(math.sin(x / win_width * n * math.pi) * A +250)
         points.append([x,y])
-    pygame.draw.lines(win,RED,False,points,3)
+    pygame.draw.aalines(win,RED,False,points,5)
     pygame.display.flip()
 
 def drawGrid():
