@@ -139,16 +139,21 @@ class Snake(pygame.sprite.Sprite):
     def move2(self):
 
         global game_over
+        global multiplayer
 
         if self.rect.left < 30 or self.rect.right > WIN_WIDTH-30 or self.rect.top < 30 or self.rect.bottom > WIN_HEIGHT-30:
 
             pygame.mixer.Sound('sounds/game_over.mp3').play()
             win.fill(BLACK)
             win.blit(game_over, ((WIN_WIDTH / 2)-180, (WIN_HEIGHT / 2)-116))
-            score1 = font_small.render("P1 score " + str(P1.size-1), True, GREEN)
-            score2 = font_small.render("P2 score " + str(P2.size-1), True, GREEN)
-            win.blit(score1, (250, (WIN_HEIGHT / 2)))
-            win.blit(score2, (250, (WIN_HEIGHT / 2)+50))
+            if multiplayer == True:
+                score1 = font_small.render("P1 score " + str(P1.size-1), True, GREEN)
+                score2 = font_small.render("P2 score " + str(P2.size-1), True, GREEN)
+                win.blit(score1, (250, (WIN_HEIGHT / 2)))
+                win.blit(score2, (250, (WIN_HEIGHT / 2)+50))
+            else:
+                score = font_small.render("Your score " + str(P1.size-1), True, GREEN)
+                win.blit(score, (250, (WIN_HEIGHT / 2)))
             pygame.display.update()
             time.sleep(3)
             pygame.quit()
