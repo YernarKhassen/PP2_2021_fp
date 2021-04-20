@@ -145,8 +145,10 @@ class Snake(pygame.sprite.Sprite):
             pygame.mixer.Sound('sounds/game_over.mp3').play()
             win.fill(BLACK)
             win.blit(game_over, ((WIN_WIDTH / 2)-180, (WIN_HEIGHT / 2)-116))
-            scores = font_small.render("Your score " + str(self.size-1), True, GREEN)
-            win.blit(scores, (250, (WIN_HEIGHT / 2)))
+            score1 = font_small.render("P1 score " + str(P1.size-1), True, GREEN)
+            score2 = font_small.render("P2 score " + str(P2.size-1), True, GREEN)
+            win.blit(score1, (250, (WIN_HEIGHT / 2)))
+            win.blit(score2, (250, (WIN_HEIGHT / 2)+50))
             pygame.display.update()
             time.sleep(3)
             pygame.quit()
@@ -242,6 +244,8 @@ class World():
             win.blit(tile[0],tile[1])
         press = font_very_small.render("P2 move with pressed alt", True, BLACK)
         win.blit(press, (210, (WIN_HEIGHT-30)))
+
+
 world_data1 = [
 
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -307,7 +311,7 @@ run = True
 page = 1
 check2 = False
 multiplayer = False
-multi = 2
+multi = 1
 check = False
 def drawWin(page,multi):
 
@@ -497,33 +501,6 @@ def drawWin(page,multi):
                         pygame.quit()
                         sys.exit()
 
-
-
-
-# # PAGE1
-#     if P1.size > 15 or P2.size > 15:
-#         world2.draw()
-#         P1.update()
-#         P1.move2()
-#         F1.move2()
-#     else:
-#         world1.draw()
-#         P1.update()
-#         P1.move()
-#         F1.move()
-#         P1.draw()
-#         F1.draw(win)
-# # PAGE2
-#         world2.draw()
-#         P1.update()
-#         P1.move2()
-#         F1.move2()
-#         P1.draw()
-#         F1.draw(win)
-    # -------------------------------------------
-
-    # -------------------------------------------
-
 while run:
 
 
@@ -551,5 +528,7 @@ while run:
 
 
     pygame.display.flip()
+
     clock.tick(P1.speed)
+
 pygame.quit()
